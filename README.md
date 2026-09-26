@@ -1,11 +1,13 @@
 # Geometric vs Point-E Augmentation for PointNet — geometric wins by 8.0 pts
 
+![Figure 1: ModelNet40 data, three training branches (no augmentation, geometric, Point-E), PointNet, and test accuracy](assets/hero.png)
+
+*Figure 1. ModelNet40 with 25 training samples per class; all thumbnails are airplane examples. Point-E samples were generated from class-name prompts and all were used without filtering. The two Point-E thumbnails are one success and one failure; about 6 of the 25 generated airplanes are not airplane-shaped. Exp2–6 were fine-tuned from the Exp1 checkpoint. Test accuracy, 1 seed, N = 910. Point-E: Nichol et al., 2022 (OpenAI).*
+
 On ModelNet40 with 25 training samples per class, generative (Point-E) augmentation
 does **not** beat geometric augmentation: added to real data it reaches **65.1%** test
 accuracy vs **73.1%** for geometric (−8.0 pts), and on its own **9.1%** vs **71.9%**.
 The real-only baseline is **66.6%**.
-
-![hero](assets/hero.png)
 
 ## Key result
 

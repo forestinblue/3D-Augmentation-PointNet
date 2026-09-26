@@ -76,7 +76,7 @@ Not verified end-to-end. Results were produced with commit `7714863`. A full run
 - **Data:** ModelNet40 (`modelnet40_hdf5_2048/` for the test set). `Data/` here ships only the `airplane` class for each experiment, plus the training logs and checkpoints.
 - **Order:** `1_traditional_augmentation/` → `2_aigc_point_e_generation/Generating_Image_PointE.py` → `3_training_pointnet/preprocess_and_train.py --stage all` → `4_evaluation_ablation/build_test_dataset.py`, `evaluate_model.py`.
 
-Re-deriving the tables and figure from the saved predictions needs only Python 3 and matplotlib:
+Re-deriving the tables and the accuracy plot (`results/accuracy_plot.png`) from the saved predictions needs only Python 3 and matplotlib:
 
 ```bash
 python results/extract_numbers.py && python results/plot.py

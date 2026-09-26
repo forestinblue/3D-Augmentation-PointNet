@@ -107,4 +107,7 @@ table above.
 
 ## Figure
 
-`assets/hero.png` ← `results/plot.py` (reads `results/numbers.json`).
+`results/accuracy_plot.png` ← `results/plot.py` (reads `results/numbers.json`).
+
+`assets/hero.png` (README Figure 1) is exported from `assets/fig_src/hero.drawio`; its
+thumbnails and result images come from `scripts/render_fig_assets.py`.

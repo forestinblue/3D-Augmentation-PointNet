@@ -10,8 +10,10 @@ All numbers below are recomputed from the per-sample prediction files in
 
 - **Data:** ModelNet40, 40 classes, 1024 points per shape.
 - **Train:** 25 samples per class per source (1,000 per source). Sources: real
-  (ModelNet40 train), geometric-augmented (Y-rotation U[-π, π], scale U[0.8, 1.2],
-  Gaussian jitter σ = 0.01), Point-E text-to-3D (10 prompts per class, 25 samples per class).
+  (ModelNet40 train), geometric-augmented (Y-rotation U[-15°, 15°], scale U[0.9, 1.1],
+  Gaussian noise σ = 0.02, random 10% point dropout; parameters from
+  `1_traditional_augmentation/Traditional_Augmentation.ipynb`), Point-E text-to-3D
+  (10 prompts per class, 25 samples per class, all kept — no quality filter).
 - **Test:** 910 samples from the ModelNet40 test split (20 or 25 per class;
   classes with only 20 test shapes cap at 20). *The report and scripts say 1,000; the CSVs contain 910.*
 - **Model/training:** PointNet, 50 epochs, Adam lr 1e-3, batch 32, seed 42.

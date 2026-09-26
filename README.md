@@ -20,7 +20,7 @@ Differences are from a single seed and have no confidence interval. Full tables:
 ## Motivation
 
 PointNet-style classifiers need lots of labelled shapes, and geometric augmentation
-(rotate, scale, jitter) only reshuffles shapes you already have. Text-to-3D diffusion
+(rotate, scale, add noise) only reshuffles shapes you already have. Text-to-3D diffusion
 models such as Point-E can produce *new* shapes for any class name, which could help
 when real data is scarce. We tested whether those synthetic shapes help a
 classifier trained on only 25 real samples per class, compared with plain geometric augmentation.
@@ -39,8 +39,8 @@ Six training sets, 25 samples per class per source, same PointNet, same test set
 | 6 | Real + geometric + Point-E |
 
 Key design choices:
-1. **Class-name prompts for Point-E.** Each class gets 10 prompt templates ("a 3D point cloud of a {class}", …) and 25 samples from the base and upsampler models (`2_aigc_point_e_generation/Generating_Image_PointE.py`).
-2. **Geometric augmentation.** Each real shape is transformed once, offline: Y-axis rotation U[−π, π], scale U[0.8, 1.2] and Gaussian jitter with σ = 0.01 (`1_traditional_augmentation/`).
+1. **Class-name prompts for Point-E.** Each class gets 10 prompt templates ("a 3D point cloud of a {class}", …) and 25 samples from the base and upsampler models, all kept without filtering (`2_aigc_point_e_generation/Generating_Image_PointE.py`).
+2. **Geometric augmentation.** Each real shape is transformed once, offline: Y-axis rotation U[−15°, 15°], scale U[0.9, 1.1], Gaussian noise with σ = 0.02 and random dropout of 10% of points (`1_traditional_augmentation/Traditional_Augmentation.ipynb`).
 3. **Equal budget per source.** Every source contributes 1,000 shapes, normalised to 1,024 points in the unit sphere, so the comparison is per-sample rather than per-dataset-size.
 
 Training uses 50 epochs, Adam with lr 1e-3, batch 32 and seed 42 (`3_training_pointnet/preprocess_and_train.py`).
@@ -85,7 +85,7 @@ python results/extract_numbers.py && python results/plot.py
 - **Type:** Course project, CIE6004 (Prof. Rui Huang), The Chinese University of Hong Kong, Shenzhen
 - **Period:** Jan 2025 – May 2025
 - **Collaborators:** Team of 4. Junseok Kim (lead), Kai Ye (preprocessing, PointNet training), Jiaheng Xu (evaluation, ablation), He Gao (report writing)
-- **My contribution:** Team lead. I initiated the project idea and defined the six experiment configurations. I built the Point-E generation pipeline (`2_aigc_point_e_generation/`), including prompt design and filtering of low-quality samples, and the geometric augmentation (`1_traditional_augmentation/`). Training (`3_training_pointnet/`) and evaluation (`4_evaluation_ablation/`) code are by teammates. For this README I re-derived the results from the saved predictions (`results/`).
+- **My contribution:** Team lead. I initiated the project idea and defined the six experiment configurations. I built the Point-E generation pipeline (`2_aigc_point_e_generation/`), including prompt design and sampling (every generated sample is kept; there is no quality filter), and the geometric augmentation (`1_traditional_augmentation/`). Training (`3_training_pointnet/`) and evaluation (`4_evaluation_ablation/`) code are by teammates. For this README I re-derived the results from the saved predictions (`results/`).
 - **Status:** Completed (archived)
 
 ## Citation / Acknowledgements

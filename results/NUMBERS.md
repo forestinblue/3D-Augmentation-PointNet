@@ -19,7 +19,7 @@ All numbers below are recomputed from the per-sample prediction files in
   for another 50 epochs (`3_training_pointnet/preprocess_and_train.py:534-540`).
 - **Runs:** 1 run per configuration, 1 seed → no variance estimate.
 
-## Table II (regenerated from CSVs)
+## Results table (regenerated from CSVs)
 
 | Exp | Training data (N train) | Test acc (%) | Macro-F1 (%) | Δ acc vs Exp1 (pts) | Mean per-class acc (%) | Final train acc (%) |
 |---|---|---|---|---|---|---|
@@ -99,9 +99,9 @@ differences are within noise, so the per-class table is descriptive only.
 
 ## Superseded numbers
 
-`report/group16-final report.pdf`, Table II (87.4 / 90.2 / 88.6 / 91.7 / 90.6 / 92.6 %)
-and the previous README table are not reproducible from any file in this repo
-and contradict the report's own abstract. They are superseded by the table above.
+The accuracy table in the README of commit `7714863` (87.4–92.6 %) is not
+reproducible from any evaluation output in this repo and is superseded by the
+table above.
 
 ## Figure
 

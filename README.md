@@ -64,8 +64,6 @@ Per-class accuracies are in [`results/NUMBERS.md`](results/NUMBERS.md).
 - **Point-E does not help at this scale:** Exp5 improves on 16 classes and gets worse on 18. Adding Point-E on top of geometric augmentation (Exp6, 69.0%) lowers accuracy compared with geometric augmentation alone (Exp4, 73.1%).
 - **Failure case:** the Point-E-only model (Exp3) collapses to 9.1%. It is the baseline model fine-tuned on synthetic shapes only, so it drifts to Point-E's shape distribution: its training accuracy is 90.3%, but on the real test set it predicts only 34 of the 40 classes. Visual inspection showed many generated shapes with broken or ambiguous geometry.
 
-> The submitted course report (`report/`) has a Table II with different numbers (87–93%) that cannot be traced to any evaluation output in this repo. The numbers above supersede it. They match `4_evaluation_ablation/pointnet_evaluation_report.pdf`.
-
 Limitations: there is one seed, and the per-class test sets have only 20–25 samples. Exp2–6 also get extra epochs from fine-tuning. Treat gaps of a few points as noise. The 8-pt gap between Exp4 and Exp5 and the Exp3 collapse are large enough to report.
 
 ## Reproduce

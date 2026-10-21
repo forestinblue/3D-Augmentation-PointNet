@@ -73,7 +73,7 @@ Limitations: there is one seed, and the per-class test sets have only 20–25 sa
 Not verified end-to-end. Results were produced with commit `7714863`. A full run needs:
 
 - **Environment:** Python 3 with `requirements.txt` (torch 2.6.0, CUDA 12.4, `point-e` installed from github.com/openai/point-e). Point-E generation needs a CUDA GPU.
-- **Data:** ModelNet40 (`modelnet40_hdf5_2048/` for the test set). `Data/` here ships only the `airplane` class for each experiment, plus the training logs and checkpoints.
+- **Data:** ModelNet40 (`modelnet40_hdf5_2048/` for the test set). `Data/` here ships only the `airplane` class for each experiment, plus the training logs. The six trained checkpoints (`model_<exp>.pth`, 14 MB each) are attached to the GitHub Release [`checkpoints-v1`](https://github.com/forestinblue/3D-Augmentation-PointNet/releases/tag/checkpoints-v1); download each to `Data/<exp>/` before running `evaluate_model.py`.
 - **Order:** `1_traditional_augmentation/` → `2_aigc_point_e_generation/Generating_Image_PointE.py` → `3_training_pointnet/preprocess_and_train.py --stage all` → `4_evaluation_ablation/build_test_dataset.py`, `evaluate_model.py`.
 
 Re-deriving the tables and the accuracy plot (`results/accuracy_plot.png`) from the saved predictions needs only Python 3 and matplotlib:

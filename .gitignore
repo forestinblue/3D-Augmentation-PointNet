@@ -6,3 +6,8 @@
 # python
 __pycache__/
 *.pyc
+
+# checkpoints live in the GitHub Release "checkpoints-v1", not in the tree
+*.pth
+*.pt
+*.ckpt

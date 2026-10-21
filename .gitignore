@@ -1,0 +1,8 @@
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+
+# python
+__pycache__/
+*.pyc
